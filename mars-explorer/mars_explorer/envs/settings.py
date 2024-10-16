@@ -38,7 +38,7 @@ DEFAULT_CONFIG={
               "drone_img":'/home/dkoutras/GeneralExplorationPolicy/mars-explorer/tests/img/drone.png',
               "obstacle_img":'/home/dkoutras/GeneralExplorationPolicy/mars-explorer/tests/img/block.png',
               "background_img":'/home/dkoutras/GeneralExplorationPolicy/mars-explorer/tests/img/mars.jpg',
-              "light_mask":"C:\\Users\\kamat\\RLMARSEXPLORER_ENV\\mars-explorer\\tests\\img\\light_350_hard.png",
+              "light_mask":"/home/dkoutras/GeneralExplorationPolicy/mars-explorer/tests/img/light_350_hard.png",
               "night_color":(20, 20, 20),
               "draw_lidar":True,
               "draw_grid":False,
