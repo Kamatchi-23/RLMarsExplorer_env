@@ -14,7 +14,7 @@ class Explorer(gym.Env):
                 'video.frames_per_second': 6}
     # def __init__(self, conf=None):
     #  check why conf is not compatible will RLlib (it works on standalone gym)
-    def __init__(self):
+    def __init__(self, render_mode='rgb_array'):
 
         # if conf==None:
         #     self.conf = DEFAULT_CONFIG
@@ -31,7 +31,7 @@ class Explorer(gym.Env):
 
         self.action_space = gym.spaces.Discrete(4)
         self.observation_space = gym.spaces.Box(0.,1.,(self.sizeX, self.sizeY, 1))
-
+        self.render_mode = render_mode
         self.viewerActive = False
 
     # def reset(self, initial=[0,0]):
@@ -96,19 +96,21 @@ class Explorer(gym.Env):
         random = np.random.randint(4)
         return random
 
-    def render(self, mode='human'):
+    def render(self, mode=None):
+        if mode is None:
+            mode = self.render_mode  # Use the class attribute if mode is not specified
+
         if mode == 'rgb_array':
             if not self.viewerActive:
                 self.viewer = Viewer(self, self.conf["viewer"])
                 self.viewerActive = True
-
             self.viewer.run()
             return np.swapaxes(self.viewer.get_display_as_array(), 0, 1)
+
         elif mode == 'human':
             if not self.viewerActive:
                 self.viewer = Viewer(self, self.conf["viewer"])
                 self.viewerActive = True
-
             self.viewer.run()
     """
     def render(self, mode='human'):
