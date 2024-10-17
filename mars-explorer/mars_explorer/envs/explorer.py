@@ -105,8 +105,13 @@ class Explorer(gym.Env):
                 self.viewer = Viewer(self, self.conf["viewer"])
                 self.viewerActive = True
             self.viewer.run()
-            return np.swapaxes(self.viewer.get_display_as_array(), 0, 1)
 
+            frame = np.swapaxes(self.viewer.get_display_as_array(), 0, 1)
+            if frame is None:
+                raise ValueError("Rendering failed, got None for 'rgb_array'")
+            
+            print(f"Rendered frame shape: {frame.shape}")  # Check the frame shape
+            return frame
         elif mode == 'human':
             if not self.viewerActive:
                 self.viewer = Viewer(self, self.conf["viewer"])
