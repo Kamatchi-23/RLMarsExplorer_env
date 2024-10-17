@@ -10,7 +10,7 @@ from gym import error, spaces, utils
 from gym.utils import seeding
 
 class Explorer(gym.Env):
-    metadata = {'render.modes': ['rgb_array'],
+    metadata = {'render_modes': ['rgb_array'],
                 'video.frames_per_second': 6}
     # def __init__(self, conf=None):
     #  check why conf is not compatible will RLlib (it works on standalone gym)
